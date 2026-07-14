@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worker dashboard — WorkBandhu</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="base.css" />
+  </head>
+  <body>
+    <header class="site-header"><div id="site-nav"></div></header>
+    <main>
+      <section
+        class="container"
+        style="padding-top: 40px"
+        id="dash-root"
+      ></section>
+    </main>
+    <footer class="site-footer"><div id="site-footer"></div></footer>
+    <script src="auth.js"></script>
+    <script src="validation.js"></script>
+    <script src="dashboard.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        Dashboard.initWorker();
+      });
+    </script>
+  </body>
+</html>
