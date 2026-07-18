@@ -69,7 +69,7 @@
             return;
           }
           const result = Auth.login(email, password);
-          if (result.ok) {
+          if (result.success) {
             msg.textContent = "Logged in. Redirecting…";
             msg.className = "form-msg success show";
             const dest =
@@ -78,7 +78,7 @@
                 : "customer-dashboard.html";
             setTimeout(() => (window.location.href = dest), 500);
           } else {
-            msg.textContent = result.error;
+            msg.textContent = result.message;
             msg.className = "form-msg error show";
           }
         });

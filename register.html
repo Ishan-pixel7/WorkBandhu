@@ -227,7 +227,7 @@
               .filter(Boolean);
           }
           const result = Auth.register(payload);
-          if (result.ok) {
+          if (result.success) {
             msg.textContent = "Account created. Redirecting to your dashboard…";
             msg.className = "form-msg success show";
             const dest =
@@ -236,7 +236,7 @@
                 : "customer-dashboard.html";
             setTimeout(() => (window.location.href = dest), 600);
           } else {
-            msg.textContent = result.error;
+            msg.textContent = result.message;
             msg.className = "form-msg error show";
           }
         });

@@ -112,6 +112,18 @@ const Auth = {
     DB.remove("wb_session");
     window.location.href = "login.html";
   },
+  redirectIfLoggedIn() {
+    let user = this.current();
+    if (user) {
+      const dest =
+        user.role === "worker"
+          ? "worker-dashboard.html"
+          : "customer-dashboard.html";
+      window.location.href = dest;
+      return true;
+    }
+    return false;
+  },
   check() {
     let user = this.current();
     if (!user) {

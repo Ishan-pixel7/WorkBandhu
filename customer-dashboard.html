@@ -1,50 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customer dashboard — WorkBandhu</title>
-<link rel="stylesheet" href="dashboard.css">
-<link rel="stylesheet" href="base.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer dashboard — WorkBandhu</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-<header class="site-header"><div id="site-nav"></div></header>
-<main>
-  <section class="container" style="padding-top:40px;" id="dash-root">
-  </section>
-</main>
-<footer class="site-footer"><div id="site-footer"></div></footer>
-<div class="modal-overlay" id="review-overlay">
-  <div class="modal">
-    <button class="close-x" id="review-close">✕</button>
-    <span class="eyebrow">Booking request</span>
-    <h3 id="review-worker-name">Rate this job</h3>
-    <div class="form-msg" id="review-msg"></div>
-    <form id="review-form">
-      <div class="field">
-        <label for="rv-rating">Rating</label>
-        <select id="rv-rating">
-          <option value="5">5 — Excellent</option>
-          <option value="4">4 — Good</option>
-          <option value="3">3 — Okay</option>
-          <option value="2">2 — Below average</option>
-          <o   ption value="1">1 — Poor</option>
-        </select>
+  <div class="dash-layout">
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    
+    <!-- Sidebar -->
+    <aside class="dash-sidebar" id="dash-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">W</div>
+        <div class="brand-text">WorkBandhu</div>
       </div>
-      <div class="field">
-        <label for="rv-comment">Comment</label>
-        <textarea id="rv-comment" placeholder="How did the job go?"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Submit review</button>
-    </form>
+      <nav class="sidebar-nav" id="sidebar-nav"></nav>
+      <div class="sidebar-footer" id="sidebar-footer"></div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="dash-main">
+      <header class="dash-topbar" id="dash-topbar"></header>
+      <main class="dash-content" id="dash-root"></main>
+    </div>
   </div>
-</div>
-<script src="auth.js"></script>
-<script src="dashboard.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    Dashboard.initCustomer();
-  });
-</script>
+
+  <!-- Review Modal -->
+  <div class="modal-overlay" id="review-overlay">
+    <div class="modal">
+      <button class="close-x" id="review-close">✕</button>
+      <span class="eyebrow">Booking request</span>
+      <h3 id="review-worker-name">Rate this job</h3>
+      <div class="form-msg" id="review-msg"></div>
+      <form id="review-form">
+        <div class="field">
+          <label for="rv-rating">Rating</label>
+          <select id="rv-rating">
+            <option value="5">5 — Excellent</option>
+            <option value="4">4 — Good</option>
+            <option value="3">3 — Okay</option>
+            <option value="2">2 — Below average</option>
+            <option value="1">1 — Poor</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="rv-comment">Comment</label>
+          <textarea id="rv-comment" placeholder="How did the job go?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit review</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="booking-overlay">
+    <div class="modal">
+      <button class="close-x" id="booking-close">✕</button>
+      <span class="eyebrow">New Booking</span>
+      <h3>Book a Worker</h3>
+      <div class="form-msg" id="booking-msg"></div>
+      <form id="booking-form">
+        <div class="field">
+          <label for="bk-worker">Select Worker</label>
+          <select id="bk-worker"></select>
+        </div>
+        <div class="field">
+          <label for="bk-service">Service Required</label>
+          <input type="text" id="bk-service" placeholder="e.g. Fixing a leaking pipe">
+        </div>
+        <div class="field">
+          <label for="bk-date">Date</label>
+          <input type="date" id="bk-date">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>

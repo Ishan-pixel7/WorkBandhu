@@ -173,5 +173,36 @@ const Validate = {
         }
       }
     );
+  },
+  // aliases used by the HTML templates
+  liveField(field, rule) {
+    return this.listen(field, rule);
+  },
+  loginForm(email, password) {
+    return this.login(email, password);
+  },
+  registerForm(data) {
+    return this.register(data);
+  },
+  minLength(value, size, name) {
+    return this.length(value, size, name);
+  },
+  matches(a, b, name) {
+    return this.same(a, b, name);
+  },
+  renderPasswordStrength(value) {
+    const bar = document.getElementById("pw-strength-bar");
+    if (!bar) return;
+    let score = 0;
+    if (value.length >= 6) score++;
+    if (value.length >= 10) score++;
+    if (/[A-Z]/.test(value)) score++;
+    if (/[0-9]/.test(value)) score++;
+    if (/[^A-Za-z0-9]/.test(value)) score++;
+    const pct = Math.min(score * 20, 100);
+    bar.style.width = pct + "%";
+    if (pct <= 40) bar.style.background = "#b24435";
+    else if (pct <= 60) bar.style.background = "#e76e2f";
+    else bar.style.background = "#2e6b3e";
   }
 };
