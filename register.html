@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — WorkBandhu</title>
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="forms.css" />
+  <link rel="icon" type="image/png" href="images/logo-nobackground.png" />
+</head>
+<body>
+  <div class="auth-page-wrap">
+
+    <!-- LEFT: decorative panel -->
+    <div class="auth-visual">
+      <div class="auth-visual-logo">Work<span>Bandhu</span></div>
+      <h2>Join WorkBandhu</h2>
+      <p>Connect with skilled workers or find work — it's free to join and easy to get started.</p>
+      <div class="auth-features">
+        <div class="auth-feature">
+          <span>💼</span>
+          <div class="auth-feature-text">
+            <strong>Find Work Fast</strong>
+            Workers get booking requests from day one.
+          </div>
+        </div>
+        <div class="auth-feature">
+          <span>🔍</span>
+          <div class="auth-feature-text">
+            <strong>Hire with Confidence</strong>
+            Browse verified profiles and real ratings.
+          </div>
+        </div>
+        <div class="auth-feature">
+          <span>✅</span>
+          <div class="auth-feature-text">
+            <strong>100% Free to Register</strong>
+            No subscription or hidden charges.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: form panel -->
+    <div class="auth-form-panel">
+      <a href="html/index.html" class="back-link">← Back to Home</a>
+      <span class="eyebrow">Create your account</span>
+      <h2>Join WorkBandhu</h2>
+      <p class="auth-sub">Choose how you want to use the platform.</p>
+
+      <div class="role-toggle">
+        <button type="button" id="role-customer" class="active">🏠 I need work done</button>
+        <button type="button" id="role-worker">🔧 I do skilled work</button>
+      </div>
+
+      <div class="form-msg" id="form-msg"></div>
+
+      <form id="register-form" novalidate>
+        <div class="field" id="field-name">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Your full name" autocomplete="name" />
+          <small class="field-error" id="err-name"></small>
+        </div>
+        <div class="field" id="field-email">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+          <small class="field-error" id="err-email"></small>
+        </div>
+        <div class="field" id="field-phone">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="Mobile number" />
+          <small class="field-error" id="err-phone"></small>
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <input type="text" id="location" placeholder="City, e.g. Kathmandu" />
+        </div>
+
+        <!-- Worker-only fields -->
+        <div id="worker-fields" style="display:none;">
+          <div class="field" id="field-category">
+            <label for="category">Trade / Category</label>
+            <select id="category">
+              <option>Carpenter</option>
+              <option>Electrician</option>
+              <option>Mechanic</option>
+              <option>Mason</option>
+              <option>Plumber</option>
+              <option>Painter</option>
+              <option>Labour</option>
+              <option>Handyman</option>
+            </select>
+            <small class="field-error" id="err-category"></small>
+          </div>
+          <div class="field" id="field-hourlyRate">
+            <label for="hourlyRate">Daily Rate (रु)</label>
+            <input type="number" id="hourlyRate" min="50" placeholder="e.g. 1200" />
+            <small class="field-error" id="err-hourlyRate"></small>
+          </div>
+          <div class="field">
+            <label for="skills">Skills</label>
+            <input type="text" id="skills" placeholder="e.g. Wiring, AC installation, Solar" />
+          </div>
+          <div class="field">
+            <label for="bio">Short Bio</label>
+            <textarea id="bio" placeholder="Experience, specialties, tools you carry…" style="min-height:90px;resize:vertical;"></textarea>
+          </div>
+          <div class="field">
+            <small class="hint">Identity verification happens after sign-up from your dashboard. New accounts start as "unverified."</small>
+          </div>
+        </div>
+
+        <div class="field" id="field-password">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="At least 6 characters" autocomplete="new-password" />
+          <div class="pw-strength"><div class="pw-strength-bar" id="pw-strength-bar"></div></div>
+          <small class="field-error" id="err-password"></small>
+        </div>
+        <div class="field" id="field-confirmPassword">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Re-enter password" autocomplete="new-password" />
+          <small class="field-error" id="err-confirmPassword"></small>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="padding:14px;font-size:0.95rem;margin-top:4px;">
+          Create Account →
+        </button>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account? <a href="login.html">Log in</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="validation.js"></script>
+  <script>
+    let selectedRole = 'customer';
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.redirectIfLoggedIn()) return;
+
+      const customerBtn  = document.getElementById('role-customer');
+      const workerBtn    = document.getElementById('role-worker');
+      const workerFields = document.getElementById('worker-fields');
+
+      function setRole(role) {
+        selectedRole = role;
+        customerBtn.classList.toggle('active', role === 'customer');
+        workerBtn.classList.toggle('active',   role === 'worker');
+        workerFields.style.display = role === 'worker' ? 'block' : 'none';
+      }
+      customerBtn.addEventListener('click', () => setRole('customer'));
+      workerBtn.addEventListener('click',   () => setRole('worker'));
+
+      Validate.liveField('name',     v => Validate.required(v, 'Name')  || Validate.minLength(v, 2, 'Name'));
+      Validate.liveField('email',    v => Validate.required(v, 'Email') || Validate.email(v));
+      Validate.liveField('phone',    v => Validate.phone(v));
+      Validate.liveField('password', v => Validate.required(v, 'Password') || Validate.minLength(v, 6, 'Password'));
+      Validate.liveField('confirmPassword', v =>
+        Validate.matches(v, document.getElementById('password').value, 'Passwords')
+      );
+      document.getElementById('password').addEventListener('input', e => {
+        Validate.renderPasswordStrength(e.target.value);
+      });
+
+      const form = document.getElementById('register-form');
+      const msg  = document.getElementById('form-msg');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const data = {
+          name:            document.getElementById('name').value.trim(),
+          email:           document.getElementById('email').value.trim(),
+          phone:           document.getElementById('phone').value.trim(),
+          password:        document.getElementById('password').value,
+          confirmPassword: document.getElementById('confirmPassword').value,
+          role:            selectedRole,
+          category:        selectedRole === 'worker' ? document.getElementById('category').value   : undefined,
+          hourlyRate:      selectedRole === 'worker' ? document.getElementById('hourlyRate').value : undefined,
+        };
+
+        if (!Validate.registerForm(data)) {
+          msg.textContent = 'Please fix the highlighted fields.';
+          msg.className   = 'form-msg error show';
+          return;
+        }
+
+        const payload = {
+          name:     data.name,
+          email:    data.email,
+          phone:    data.phone,
+          location: document.getElementById('location').value.trim(),
+          password: data.password,
+          role:     selectedRole,
+        };
+        if (selectedRole === 'worker') {
+          payload.category   = data.category;
+          payload.hourlyRate = data.hourlyRate;
+          payload.bio        = document.getElementById('bio').value.trim();
+          payload.skills     = document.getElementById('skills').value
+                                 .split(',').map(s => s.trim()).filter(Boolean);
+        }
+
+        const result = Auth.register(payload);
+        if (result.success) {
+          msg.textContent = 'Account created! Redirecting to your dashboard…';
+          msg.className   = 'form-msg success show';
+          const dest = selectedRole === 'worker' ? 'worker-dashboard.html' : 'customer-dashboard.html';
+          setTimeout(() => (window.location.href = dest), 700);
+        } else {
+          msg.textContent = result.message;
+          msg.className   = 'form-msg error show';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
