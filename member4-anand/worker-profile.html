@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worker Profile | WorkBandhu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="icon" type="image/png" href="../images/logo-nobackground.png" />
+  <style>
+    .profile-page { padding: var(--sp-6) 0; background: var(--surface); }
+    .profile-grid { display: grid; grid-template-columns: 340px 1fr; gap: 32px; align-items: start; }
+
+    /* Left card */
+    .profile-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl); overflow: hidden;
+      box-shadow: var(--shadow-sm); position: sticky; top: 90px;
+    }
+    .profile-banner {
+      height: 140px; display: flex; align-items: center;
+      justify-content: center; font-size: 4rem;
+    }
+    .profile-card-body { padding: 24px; }
+    .profile-name { font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .profile-trade { font-size: 0.9rem; color: var(--muted); margin-bottom: 12px; }
+    .profile-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; }
+    .badge-green { background: #dcfce7; color: #15803d; }
+    .badge-blue  { background: #dbeafe; color: #1d4ed8; }
+    .profile-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+    .profile-rating .stars { color: #f59e0b; font-size: 1.1rem; }
+    .profile-rating span { font-size: 0.88rem; color: var(--muted); }
+    .profile-price-box {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 16px; text-align: center; margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+    .profile-price-box .price { font-size: 1.8rem; font-weight: 900; color: var(--primary); line-height: 1; }
+    .profile-price-box .per  { font-size: 0.8rem; color: var(--muted); }
+    .profile-meta { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .meta-row { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--body-text); }
+    .meta-row span:first-child { width: 22px; text-align: center; }
+
+    /* Right content */
+    .profile-content { display: flex; flex-direction: column; gap: 24px; }
+    .content-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-xs);
+    }
+    .content-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .content-card p  { font-size: 0.92rem; color: var(--body-text); line-height: 1.75; }
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag { background: #eff6ff; color: var(--primary); font-size: 0.82rem; font-weight: 600; padding: 6px 14px; border-radius: 8px; }
+
+    /* Reviews */
+    .review-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .review-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .reviewer-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .review-stars  { color: #f59e0b; font-size: 0.85rem; }
+    .review-text   { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .review-date   { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+
+    @media (max-width: 900px) {
+      .profile-grid { grid-template-columns: 1fr; }
+      .profile-card  { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="../html/index.html" class="nav-logo">
+        <img src="../images/logo-nobackground.png" alt="WorkBandhu" />
+        <span class="nav-logo-text">WorkBandhu</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="../html/index.html">Home</a></li>
+        <li><a href="workers-listing.html" class="active">Find Workers</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="../html/about.html">About</a></li>
+        <li><a href="../html/contact.html">Contact</a></li>
+        <li><a href="../login.html" class="btn btn-ghost">Login</a></li>
+        <li><a href="../register.html" class="btn btn-primary">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Worker Profile</span>
+      <h1>Meet Your <em>Skilled Worker</em></h1>
+      <p class="hero-sub">View full profile, ratings, skills, and book directly.</p>
+    </div>
+  </header>
+
+  <section class="profile-page">
+    <div class="container">
+      <div style="margin-bottom:20px;">
+        <a href="workers-listing.html" style="font-size:0.88rem;font-weight:600;color:var(--primary);">← Back to Workers</a>
+      </div>
+      <div class="profile-grid">
+
+        <!-- LEFT: Profile Card -->
+        <div class="profile-card">
+          <div class="profile-banner" style="background:linear-gradient(135deg,#1e40af,#3b82f6);">⚡</div>
+          <div class="profile-card-body">
+            <h2 class="profile-name">Ram Bahadur</h2>
+            <p class="profile-trade">Electrician</p>
+            <div class="profile-badges">
+              <span class="badge badge-green">✔ ID Verified</span>
+              <span class="badge badge-blue">Top Rated</span>
+            </div>
+            <div class="profile-rating">
+              <span class="stars">★★★★★</span>
+              <span>4.9 · 38 reviews</span>
+            </div>
+            <div class="profile-price-box">
+              <div class="price">Rs. 1,200</div>
+              <div class="per">per day</div>
+            </div>
+            <div class="profile-meta">
+              <div class="meta-row"><span>📍</span><span>Kathmandu, Nepal</span></div>
+              <div class="meta-row"><span>✅</span><span>Available Today</span></div>
+              <div class="meta-row"><span>📋</span><span>38 jobs completed</span></div>
+              <div class="meta-row"><span>🕐</span><span>Member since Jan 2025</span></div>
+            </div>
+            <a href="../member4-anand/booking.html" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;">Book Now</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Details -->
+        <div class="profile-content">
+          <div class="content-card">
+            <h3>About</h3>
+            <p>Ram Bahadur is an experienced electrician with over 8 years of hands-on work across Kathmandu Valley. He specialises in residential wiring, AC installation, and solar panel setup. All work is done neatly and safely, with proper tools and materials.</p>
+          </div>
+          <div class="content-card">
+            <h3>Skills</h3>
+            <div class="skills-wrap">
+              <span class="skill-tag">Wiring</span>
+              <span class="skill-tag">AC Installation</span>
+              <span class="skill-tag">Solar Setup</span>
+              <span class="skill-tag">DB Board</span>
+              <span class="skill-tag">CCTV Wiring</span>
+              <span class="skill-tag">Fan Installation</span>
+            </div>
+          </div>
+          <div class="content-card">
+            <h3>Customer Reviews</h3>
+            <div class="review-item">
+              <div class="review-header">
+                <span class="reviewer-name">Priya Shrestha</span>
+                <span class="review-stars">★★★★★</span>
+              </div>
+              <p class="review-text">Ram did an excellent job rewiring our kitchen. On time, clean work, and very polite. Will definitely book again.</p>
+              <p class="review-date">June 2026</p>
+            </div>
+            <div class="review-item">
+              <div class="review-header">
+                <span class="reviewer-name">Rajesh Karki</span>
+                <span class="review-stars">★★★★★</span>
+              </div>
+              <p class="review-text">Installed 3 ACs in our office. Very professional and finished in one day. Highly recommend.</p>
+              <p class="review-date">May 2026</p>
+            </div>
+            <div class="review-item">
+              <div class="review-header">
+                <span class="reviewer-name">Sanjay Maharjan</span>
+                <span class="review-stars">★★★★☆</span>
+              </div>
+              <p class="review-text">Good work overall. Arrived a bit late but completed the job perfectly.</p>
+              <p class="review-date">April 2026</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img class="footer-brand-logo" src="../images/logo-nobackground.png" alt="WorkBandhu" />
+          <p>A simple, fair way to connect daily wage workers with people who need them.</p>
+        </div>
+        <div class="footer-col"><h4>Explore</h4><ul><li><a href="workers-listing.html">Find Workers</a></li><li><a href="services.html">Services</a></li><li><a href="../html/about.html">About</a></li></ul></div>
+        <div class="footer-col"><h4>Account</h4><ul><li><a href="../login.html">Login</a></li><li><a href="../register.html">Register</a></li></ul></div>
+      </div>
+      <div class="footer-bottom container">
+        <p>© 2026 WorkBandhu. College Project. All rights reserved.</p>
+        <p>Made with ❤️ for Nepal</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
