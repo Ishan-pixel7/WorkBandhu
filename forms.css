@@ -1,0 +1,108 @@
+.form-msg{
+    padding:10px 14px;
+    border-radius:6px;
+    font-size:14px;
+    display:none;
+    margin-bottom:16px;
+}
+.form-msg.show{
+    display:block;
+}
+.form-msg.error{
+    background:#fce8e6;
+    color:var(--red);
+}
+.form-msg.success{
+    background:#e8f3e8;
+    color:var(--green);
+}
+.eyebrow{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--green);
+    margin-bottom:4px;
+}
+.hint{
+    color:#777;
+    font-size:13px;
+}
+.close-x{
+    float:right;
+    background:none;
+    border:none;
+    font-size:20px;
+    cursor:pointer;
+    color:#777;
+}
+.close-x:hover{
+    color:var(--red);
+}
+.auth-wrap{
+    max-width:430px;
+    margin:50px auto;
+    padding:20px;
+}
+.auth-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:32px;
+}
+.auth-card h1{
+    margin-bottom:8px;
+}
+.auth-card p{
+    color:#666;
+    margin-bottom:22px;
+}
+.role-toggle{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:20px;
+}
+.role-toggle button{
+    padding:12px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+}
+.role-toggle button:hover{
+    border-color:var(--green);
+}
+.role-toggle button.active{
+    background:var(--green);
+    color:white;
+    border-color:var(--green);
+}
+.pw-strength{
+    height:5px;
+    margin-top:8px;
+    background:#ddd;
+    border-radius:5px;
+    overflow:hidden;
+}
+.pw-strength-bar{
+    height:100%;
+    width:0;
+    background:var(--orange);
+    transition:.2s;
+}
+.auth-switch{
+    text-align:center;
+    margin-top:20px;
+    color:#666;
+    font-size:14px;
+}
+.auth-switch a{
+    color:var(--green);
+    font-weight:600;
+}
+.auth-switch a:hover{
+    text-decoration:underline;
+}
