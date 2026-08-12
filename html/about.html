@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | WorkBandhu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="icon" type="image/png" href="../images/logo-nobackground.png" />
+  <style>
+    /* ---- About Page ---- */
+    .about-mission {
+      padding: var(--sp-6) 0;
+      background: var(--white);
+    }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .mission-img {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/3;
+    }
+    .mission-img img { width: 100%; height: 100%; object-fit: cover; }
+    .mission-text .section-subtitle { margin-bottom: var(--sp-3); }
+    .mission-bullets { display: flex; flex-direction: column; gap: 16px; margin-top: var(--sp-3); }
+    .mission-bullet {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px; border-radius: var(--radius); background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .bullet-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .mission-bullet h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .mission-bullet p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* Principles */
+    .principles { padding: var(--sp-6) 0; background: var(--surface); }
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: var(--sp-4);
+    }
+    .principle-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    .principle-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .principle-icon {
+      width: 64px; height: 64px;
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 20px;
+    }
+    .principle-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+    .principle-card p  { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+    /* Team */
+    .team-section { padding: var(--sp-6) 0; background: var(--white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: var(--sp-4);
+    }
+    .team-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 20px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--primary); }
+    .team-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; font-weight: 800; color: var(--white);
+      margin: 0 auto 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .team-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .team-card .role { font-size: 0.82rem; color: var(--accent); font-weight: 600; }
+    .team-card .bio  { font-size: 0.82rem; color: var(--muted); margin-top: 10px; line-height: 1.6; }
+
+    /* Impact numbers */
+    .impact { padding: var(--sp-5) 0; background: var(--primary); }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .impact-item {
+      text-align: center;
+      padding: 20px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .impact-item:last-child { border-right: none; }
+    .impact-item .num  { display: block; font-size: 2.2rem; font-weight: 900; color: var(--white); }
+    .impact-item .lbl  { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-top: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="../images/logo-nobackground.png" alt="WorkBandhu" />
+        <span class="nav-logo-text">WorkBandhu</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="worker.html">Find Workers</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="../login.html" class="btn btn-ghost">Login</a></li>
+        <li><a href="../register.html" class="btn btn-primary">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <header class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Our Story</span>
+      <h1>Built for Fair, <em>Everyday</em> Work.</h1>
+      <p class="hero-sub">
+        WorkBandhu exists to remove the uncertainty daily wage workers face every morning,
+        and the guesswork employers face when they need reliable help fast.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== MISSION ===== -->
+  <section class="about-mission">
+    <div class="container">
+      <div class="mission-grid">
+        <div class="mission-img">
+          <img src="../images/heroimage.jpg" alt="Workers on a job site" />
+        </div>
+        <div class="mission-text">
+          <span class="eyebrow">Our Mission</span>
+          <h2 class="section-title">Why We Started WorkBandhu</h2>
+          <p class="section-subtitle">
+            In most cities, daily wage workers gather at informal labour points hoping for work,
+            with no guarantee of pay rate, safety, or even being picked that day. WorkBandhu
+            bridges that gap with a transparent platform where both sides know exactly what to expect.
+          </p>
+          <div class="mission-bullets">
+            <div class="mission-bullet">
+              <span class="bullet-icon">🎯</span>
+              <div>
+                <h4>Transparent Platform</h4>
+                <p>All rates, ratings, and availability shown upfront, no hidden costs or surprises.</p>
+              </div>
+            </div>
+            <div class="mission-bullet">
+              <span class="bullet-icon">🤝</span>
+              <div>
+                <h4>Fair for Workers Too</h4>
+                <p>Workers set their own rates and build a verified reputation that follows them.</p>
+              </div>
+            </div>
+            <div class="mission-bullet">
+              <span class="bullet-icon">🌱</span>
+              <div>
+                <h4>Community First</h4>
+                <p>We're built for Nepali communities, simple enough for first-time internet users.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IMPACT ===== -->
+  <section class="impact">
+    <div class="container">
+      <div class="impact-grid">
+        <div class="impact-item"><span class="num">500+</span><span class="lbl">Workers Registered</span></div>
+        <div class="impact-item"><span class="num">1,200+</span><span class="lbl">Jobs Completed</span></div>
+        <div class="impact-item"><span class="num">8</span><span class="lbl">Trade Categories</span></div>
+        <div class="impact-item"><span class="num">4.8★</span><span class="lbl">Avg Satisfaction</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRINCIPLES ===== -->
+  <section class="principles">
+    <div class="container text-center">
+      <span class="eyebrow">What We Value</span>
+      <h2 class="section-title">Our Principles</h2>
+      <p class="section-subtitle centered">Every decision we make is guided by these core values.</p>
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="principle-icon" style="background:#ffedd5;">💰</div>
+          <h3>Fair Pay</h3>
+          <p>Transparent daily rates agreed upfront, no last-minute renegotiation or hidden fees.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-icon" style="background:#dcfce7;">🛡️</div>
+          <h3>Verified Workers</h3>
+          <p>Every profile includes ID verification, ratings, and real booking history you can trust.</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-icon" style="background:#dbeafe;">📱</div>
+          <h3>Simple for Everyone</h3>
+          <p>No jargon, no complicated steps, built to work for first-time internet users too.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section class="team-section">
+    <div class="container text-center">
+      <span class="eyebrow">The Team</span>
+      <h2 class="section-title">A College Project, Built With Care</h2>
+      <p class="section-subtitle centered">
+        WorkBandhu is a 4-member college project exploring how technology can make
+        daily wage hiring more dignified and efficient.
+      </p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#1e40af,#3b82f6);">I</div>
+          <h3>Ishan</h3>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#065f46,#10b981);">R</div>
+          <h3>Ronish</h3>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#92400e,#f59e0b);">A</div>
+          <h3>Anand</h3>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#4c1d95,#8b5cf6);">A</div>
+          <h3>Asmin</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <span class="eyebrow" style="color:#fed7aa;">Join Us</span>
+      <h2>Be Part of the WorkBandhu Community</h2>
+      <p>Whether you need work done or you do skilled work, there's a place for you here.</p>
+      <div class="cta-buttons">
+        <a href="worker.html" class="btn btn-primary">Find a Worker</a>
+        <a href="../register.html" class="btn btn-outline">Create an Account</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img class="footer-brand-logo" src="../images/logo-nobackground.png" alt="WorkBandhu" />
+          <p>A simple, fair way to connect daily wage workers with people who need them.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="worker.html">Find Workers</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="../login.html">Login</a></li>
+            <li><a href="../register.html">Register</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <p>© 2026 WorkBandhu. College Project. All rights reserved.</p>
+        <p>Made with ❤️ for Nepal</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
