@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Worker | WorkBandhu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="icon" type="image/png" href="../images/logo-nobackground.png" />
+  <style>
+    .booking-page { padding: var(--sp-6) 0; background: var(--surface); }
+    .booking-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 32px; box-shadow: var(--shadow-sm); max-width: 720px; margin: 0 auto; }
+    .booking-card h1 { font-size: 1.7rem; margin-bottom: 10px; }
+    .booking-card p { color: var(--muted); margin-bottom: 24px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; margin-bottom: 8px; font-weight: 700; color: var(--dark); }
+    .field input, .field select, .field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius); font: inherit; }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .btn-row { display: flex; gap: 12px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../images/logo-nobackground.png" alt="WorkBandhu" />
+        <span class="nav-logo-text">WorkBandhu</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="workers-listing.html">Find Workers</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="booking-page">
+    <div class="container">
+      <div class="booking-card">
+        <span class="eyebrow">Booking request</span>
+        <h1>Book this worker</h1>
+        <p>Send a request with your preferred date and service details. The worker will confirm availability shortly.</p>
+        <form>
+          <div class="field">
+            <label for="worker">Worker</label>
+            <select id="worker">
+              <option>Ram Bahadur — Electrician</option>
+              <option>Sita Tamang — Plumber</option>
+              <option>Hari Shrestha — Carpenter</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="service">Service needed</label>
+            <input id="service" type="text" placeholder="e.g. Fix leaking pipe" />
+          </div>
+          <div class="field">
+            <label for="date">Preferred date</label>
+            <input id="date" type="date" />
+          </div>
+          <div class="field">
+            <label for="notes">Additional notes</label>
+            <textarea id="notes" placeholder="Let the worker know your location, timing, or special requests."></textarea>
+          </div>
+          <div class="btn-row">
+            <a href="worker-profile.html" class="btn btn-ghost">Cancel</a>
+            <button type="submit" class="btn btn-primary">Submit request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-note">© 2026 WorkBandhu · College project</div>
+  </footer>
+</body>
+</html>
