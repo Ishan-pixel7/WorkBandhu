@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkBandhu | Find Skilled Workers Near You</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="icon" type="image/png" href="images/logo-nobackground.png" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo-nobackground.png" alt="WorkBandhu Logo" />
+        <span class="nav-logo-text">WorkBandhu</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="html/worker.html">Find Workers</a></li>
+        <li><a href="html/about.html">About</a></li>
+        <li><a href="html/contact.html">Contact</a></li>
+        <li><a href="login.html" class="btn btn-ghost">Login</a></li>
+        <li><a href="register.html" class="btn btn-primary">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>🇳🇵</span> Trusted in Nepal &nbsp;·&nbsp; <span>500+</span> Workers
+        </div>
+        <h1>
+          Hire Skilled Workers<br />
+          <span class="highlight">Fast &amp; Reliably</span>
+        </h1>
+        <p>
+          WorkBandhu connects you with verified electricians, plumbers, carpenters, painters
+          and more, right in your neighbourhood. No middlemen, no guesswork.
+        </p>
+        <div class="hero-actions">
+          <a href="html/worker.html" class="btn btn-primary">Find a Worker</a>
+          <a href="register.html" class="btn btn-outline">Join as Worker</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Workers</span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-num">1,200+</span>
+            <span class="stat-label">Jobs Done</span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-num">4.8★</span>
+            <span class="stat-label">Avg Rating</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img src="images/heroimage.jpg" alt="Skilled worker on job site" />
+        </div>
+        <div class="hero-trust-card">
+          <div class="trust-icon">✅</div>
+          <div class="trust-text">
+            <span class="trust-num">100% Verified</span>
+            <span class="trust-label">All workers are ID-checked</span>
+          </div>
+        </div>
+        <div class="hero-verified">✔ Background checked</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEARCH BAR ===== -->
+  <section class="search-bar-section">
+    <div class="container">
+      <div class="search-bar-card">
+        <h3>🔍 Find the right worker for your job</h3>
+        <div class="search-bar-inner">
+          <div class="search-input-group">
+            <span class="input-icon">👷</span>
+            <input type="text" placeholder="e.g. Electrician, Plumber…" id="hero-search" />
+          </div>
+          <div class="search-input-group">
+            <span class="input-icon">📍</span>
+            <select id="hero-location">
+              <option value="">All Locations</option>
+              <option>Kathmandu</option>
+              <option>Lalitpur</option>
+              <option>Bhaktapur</option>
+              <option>Pokhara</option>
+              <option>Chitwan</option>
+            </select>
+          </div>
+          <div class="search-input-group">
+            <span class="input-icon">🛠</span>
+            <select id="hero-category">
+              <option value="">All Categories</option>
+              <option>Electrician</option>
+              <option>Plumber</option>
+              <option>Carpenter</option>
+              <option>Painter</option>
+              <option>Mason</option>
+              <option>Mechanic</option>
+              <option>Labour</option>
+            </select>
+          </div>
+          <a href="html/worker.html" class="btn btn-primary" id="hero-search-btn">Search</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAR ===== -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stat-item">
+        <span class="num">500+</span>
+        <span class="lbl">Skilled Workers</span>
+      </div>
+      <div class="stat-item">
+        <span class="num">8</span>
+        <span class="lbl">Trade Categories</span>
+      </div>
+      <div class="stat-item">
+        <span class="num">1,200+</span>
+        <span class="lbl">Jobs Completed</span>
+      </div>
+      <div class="stat-item">
+        <span class="num">4.8★</span>
+        <span class="lbl">Average Rating</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CATEGORIES ===== -->
+  <section class="categories">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="eyebrow">Browse by Trade</span>
+        <h2 class="section-title">Popular Categories</h2>
+        <p class="section-subtitle centered">
+          Choose from a wide range of skilled tradespeople ready to help with your project.
+        </p>
+      </div>
+      <div class="category-grid">
+        <a href="html/worker.html?cat=electrician" class="category-card">
+          <div class="cat-icon-wrap cat-yellow">⚡</div>
+          <h3>Electrician</h3>
+          <span class="cat-count">48 workers available</span>
+        </a>
+        <a href="html/worker.html?cat=plumber" class="category-card">
+          <div class="cat-icon-wrap cat-blue">🔧</div>
+          <h3>Plumber</h3>
+          <span class="cat-count">62 workers available</span>
+        </a>
+        <a href="html/worker.html?cat=carpenter" class="category-card">
+          <div class="cat-icon-wrap cat-orange">🪚</div>
+          <h3>Carpenter</h3>
+          <span class="cat-count">35 workers available</span>
+        </a>
+        <a href="html/worker.html?cat=painter" class="category-card">
+          <div class="cat-icon-wrap cat-purple">🎨</div>
+          <h3>Painter</h3>
+          <span class="cat-count">40 workers available</span>
+        </a>
+        <a href="html/worker.html?cat=mason" class="category-card">
+          <div class="cat-icon-wrap cat-red">🧱</div>
+          <h3>Mason</h3>
+          <span class="cat-count">29 workers available</span>
+        </a>
+        <a href="html/worker.html?cat=mechanic" class="category-card">
+          <div class="cat-icon-wrap cat-teal">🔩</div>
+          <h3>Mechanic</h3>
+          <span class="cat-count">21 workers available</span>
+        </a>
+        <a href="html/worker.html?cat=labour" class="category-card">
+          <div class="cat-icon-wrap cat-green">👷</div>
+          <h3>General Labour</h3>
+          <span class="cat-count">110 workers available</span>
+        </a>
+        <a href="html/worker.html?cat=handyman" class="category-card">
+          <div class="cat-icon-wrap cat-pink">🛠</div>
+          <h3>Handyman</h3>
+          <span class="cat-count">54 workers available</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works">
+    <div class="container text-center">
+      <span class="eyebrow">Simple Process</span>
+      <h2 class="section-title">How WorkBandhu Works</h2>
+      <p class="section-subtitle centered">
+        From searching to hiring, it takes just a few minutes.
+      </p>
+      <div class="hiw-grid">
+        <div class="hiw-card">
+          <div class="hiw-step-num">1</div>
+          <h3>Search</h3>
+          <p>Browse by trade or location. Filter by rating, availability, and daily rate to find the perfect match.</p>
+        </div>
+        <div class="hiw-card">
+          <div class="hiw-step-num">2</div>
+          <h3>Select</h3>
+          <p>View worker profiles, check verified reviews, and compare rates, all in one place.</p>
+        </div>
+        <div class="hiw-card">
+          <div class="hiw-step-num">3</div>
+          <h3>Hire</h3>
+          <p>Send a booking request, agree on the date, and get your job done with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED WORKERS ===== -->
+  <section class="featured-workers">
+    <div class="container">
+      <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:var(--sp-4);">
+        <div>
+          <span class="eyebrow">Top Rated</span>
+          <h2 class="section-title" style="margin-bottom:0;">Featured Workers</h2>
+        </div>
+        <a href="html/worker.html" class="btn btn-ghost">View All →</a>
+      </div>
+      <div class="workers-grid">
+
+        <div class="worker-card">
+          <div class="worker-card-img-placeholder" style="background:linear-gradient(135deg,#1e40af,#3b82f6);">
+            <span style="font-size:2.5rem;">👷</span>
+          </div>
+          <div class="worker-card-body">
+            <div class="worker-card-header">
+              <h3>Ram Bahadur</h3>
+              <span class="badge-verified">✔ Verified</span>
+            </div>
+            <p class="trade">⚡ Electrician &nbsp;·&nbsp; 📍 Kathmandu</p>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-num">4.9 (38 reviews)</span>
+            </div>
+          </div>
+          <div class="worker-card-footer">
+            <div class="price">Rs. 1,200 <span>/ day</span></div>
+            <a href="html/worker.html" class="btn-hire">Hire Now</a>
+          </div>
+        </div>
+
+        <div class="worker-card">
+          <div class="worker-card-img-placeholder" style="background:linear-gradient(135deg,#065f46,#10b981);">
+            <span style="font-size:2.5rem;">🔧</span>
+          </div>
+          <div class="worker-card-body">
+            <div class="worker-card-header">
+              <h3>Sita Tamang</h3>
+              <span class="badge-verified">✔ Verified</span>
+            </div>
+            <p class="trade">🔧 Plumber &nbsp;·&nbsp; 📍 Lalitpur</p>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-num">4.7 (24 reviews)</span>
+            </div>
+          </div>
+          <div class="worker-card-footer">
+            <div class="price">Rs. 1,000 <span>/ day</span></div>
+            <a href="html/worker.html" class="btn-hire">Hire Now</a>
+          </div>
+        </div>
+
+        <div class="worker-card">
+          <div class="worker-card-img-placeholder" style="background:linear-gradient(135deg,#92400e,#f59e0b);">
+            <span style="font-size:2.5rem;">🪚</span>
+          </div>
+          <div class="worker-card-body">
+            <div class="worker-card-header">
+              <h3>Hari Shrestha</h3>
+              <span class="badge-verified">✔ Verified</span>
+            </div>
+            <p class="trade">🪚 Carpenter &nbsp;·&nbsp; 📍 Bhaktapur</p>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-num">5.0 (52 reviews)</span>
+            </div>
+          </div>
+          <div class="worker-card-footer">
+            <div class="price">Rs. 1,500 <span>/ day</span></div>
+            <a href="html/worker.html" class="btn-hire">Hire Now</a>
+          </div>
+        </div>
+
+        <div class="worker-card">
+          <div class="worker-card-img-placeholder" style="background:linear-gradient(135deg,#4c1d95,#8b5cf6);">
+            <span style="font-size:2.5rem;">🎨</span>
+          </div>
+          <div class="worker-card-body">
+            <div class="worker-card-header">
+              <h3>Raju Magar</h3>
+              <span class="badge-verified">✔ Verified</span>
+            </div>
+            <p class="trade">🎨 Painter &nbsp;·&nbsp; 📍 Kathmandu</p>
+            <div class="rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-num">4.5 (18 reviews)</span>
+            </div>
+          </div>
+          <div class="worker-card-footer">
+            <div class="price">Rs. 1,100 <span>/ day</span></div>
+            <a href="html/worker.html" class="btn-hire">Hire Now</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY WORKBANDHU ===== -->
+  <section class="why-section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-image-wrap">
+          <img src="images/heroimage.jpg" alt="Workers on site" />
+        </div>
+        <div>
+          <span class="eyebrow">Why Choose Us</span>
+          <h2 class="section-title">The Smarter Way to Hire</h2>
+          <p class="section-subtitle" style="margin-bottom:0;">
+            WorkBandhu removes the uncertainty from daily wage hiring, for both workers and employers.
+          </p>
+          <div class="why-features">
+            <div class="why-feature">
+              <div class="why-feature-icon" style="background:#dbeafe;">🛡️</div>
+              <div>
+                <h4>Verified Profiles</h4>
+                <p>Every worker is ID-checked before joining the platform.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="why-feature-icon" style="background:#dcfce7;">💰</div>
+              <div>
+                <h4>Transparent Rates</h4>
+                <p>Rates are agreed upfront, no last-minute surprises.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="why-feature-icon" style="background:#ffedd5;">⭐</div>
+              <div>
+                <h4>Honest Reviews</h4>
+                <p>Ratings from real bookings you can actually trust.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="why-feature-icon" style="background:#f3e8ff;">⚡</div>
+              <div>
+                <h4>Fast Booking</h4>
+                <p>Book in minutes, same-day availability shown live.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:var(--sp-4);">
+        <span class="eyebrow">Customer Stories</span>
+        <h2 class="section-title">What Our Users Say</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p>"WorkBandhu made it so easy to find a reliable plumber for my home. The booking process was smooth and the worker arrived on time!"</p>
+          <div class="t-author">
+            <div class="t-avatar">PS</div>
+            <div>
+              <h4>Priya Shrestha</h4>
+              <span>Homeowner, Kathmandu</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p>"I found a skilled electrician through WorkBandhu within 20 minutes. The verified ratings gave me confidence to hire without hesitation."</p>
+          <div class="t-author">
+            <div class="t-avatar" style="background:linear-gradient(135deg,var(--accent),#fb923c);">RK</div>
+            <div>
+              <h4>Rajesh Karki</h4>
+              <span>Small Business Owner, Lalitpur</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-stars">★★★★★</div>
+          <p>"As a painter registered on WorkBandhu, I've doubled my monthly income. The platform is simple and getting jobs has never been easier."</p>
+          <div class="t-author">
+            <div class="t-avatar" style="background:linear-gradient(135deg,#059669,#10b981);">AM</div>
+            <div>
+              <h4>Anjali Maharjan</h4>
+              <span>Painter &amp; Worker, Bhaktapur</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <span class="eyebrow" style="color:#fed7aa;">Ready to Get Started?</span>
+      <h2>Connect with Skilled Workers Today</h2>
+      <p>Join thousands of customers and workers already using WorkBandhu to get jobs done.</p>
+      <div class="cta-buttons">
+        <a href="html/worker.html" class="btn btn-primary">Find a Worker</a>
+        <a href="register.html" class="btn btn-outline">Register as Worker</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img class="footer-brand-logo" src="images/logo-nobackground.png" alt="WorkBandhu" />
+          <p>A simple, fair way to connect daily wage workers with people who need them, built for Nepali communities.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Facebook">f</a>
+            <a href="#" class="social-link" aria-label="Instagram">📷</a>
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="html/worker.html">Find Workers</a></li>
+            <li><a href="html/about.html">About Us</a></li>
+            <li><a href="html/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <p>© 2026 WorkBandhu. College Project. All rights reserved.</p>
+        <p>Made with ❤️ for Nepal</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

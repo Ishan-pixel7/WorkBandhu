@@ -8,43 +8,163 @@
   <link rel="stylesheet" href="../css/responsive.css" />
   <link rel="icon" type="image/png" href="../images/logo-nobackground.png" />
   <style>
+    /* ---- Workers Page ---- */
     .workers-page { padding: var(--sp-5) 0 var(--sp-6); background: var(--surface); min-height: 60vh; }
-    .filter-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 32px; box-shadow: var(--shadow-xs); }
+
+    /* Filter Card */
+    .filter-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-xs);
+    }
     .filter-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 16px; }
-    .filter-row { display: flex; gap: 14px; align-items: flex-end; flex-wrap: wrap; }
-    .filter-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 150px; }
+    .filter-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      min-width: 150px;
+    }
     .filter-group label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-    .filter-group input, .filter-group select { padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--radius); font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--dark); background: var(--surface); transition: border-color 0.2s, box-shadow 0.2s; appearance: none; }
-    .filter-group input:focus, .filter-group select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(15,76,129,0.1); background: var(--white); }
-    .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .filter-group input,
+    .filter-group select {
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--dark);
+      background: var(--surface);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+    .filter-group input:focus,
+    .filter-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15,76,129,0.1);
+      background: var(--white);
+    }
+
+    /* Results header */
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
     .results-header h2 { font-size: 1.1rem; font-weight: 700; color: var(--dark); }
-    .wcard { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; }
+    .results-header span { font-size: 0.85rem; color: var(--muted); }
+
+    /* Worker Card (full page version) */
+    .wcard {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
     .wcard:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
-    .wcard-banner { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; }
-    .wcard-avail { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.95); border-radius: 20px; padding: 4px 12px; font-size: 0.72rem; font-weight: 700; color: #15803d; display: flex; align-items: center; gap: 5px; }
+
+    .wcard-banner {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+    }
+    .wcard-avail {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #15803d;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
     .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; display: inline-block; }
+
     .wcard-body { padding: 20px; flex: 1; }
     .wcard-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
     .wcard-top h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); }
-    .wcard-top .vbadge { background: #dcfce7; color: #15803d; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .wcard-top .vbadge {
+      background: #dcfce7; color: #15803d;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px;
+    }
     .wcard-trade { font-size: 0.83rem; color: var(--muted); margin-bottom: 10px; }
-    .wcard-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .wcard-rating {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+    }
     .wcard-rating .stars { color: #f59e0b; font-size: 0.9rem; }
     .wcard-rating span { font-size: 0.82rem; color: var(--muted); }
     .wcard-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-    .skill-chip { background: #eff6ff; color: var(--primary); font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; }
-    .wcard-footer { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; border-top: 1px solid var(--border); background: var(--surface); }
+    .skill-chip {
+      background: #eff6ff; color: var(--primary);
+      font-size: 0.72rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 6px;
+    }
+    .wcard-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
     .wcard-price { font-size: 1rem; font-weight: 800; color: var(--primary); }
     .wcard-price span { font-size: 0.78rem; font-weight: 400; color: var(--muted); }
-    .wgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
-    .sort-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+
+    /* Worker grid */
+    .wgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    /* Sort bar */
+    .sort-bar {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
     .sort-bar span { font-size: 0.82rem; color: var(--muted); }
-    .sort-chip { padding: 6px 16px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; border: 1.5px solid var(--border); background: var(--white); color: var(--body-text); cursor: pointer; transition: all 0.2s; }
-    .sort-chip.active, .sort-chip:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+    .sort-chip {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--body-text);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sort-chip.active, .sort-chip:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
   </style>
 </head>
 <body>
 
+  <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
     <div class="container">
       <a href="../index.html" class="nav-logo">
@@ -54,16 +174,16 @@
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="workers-listing.html" class="active">Find Workers</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="../html/about.html">About</a></li>
-        <li><a href="../html/contact.html">Contact</a></li>
+        <li><a href="worker.html" class="active">Find Workers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="../login.html" class="btn btn-ghost">Login</a></li>
         <li><a href="../register.html" class="btn btn-primary">Get Started</a></li>
       </ul>
     </div>
   </nav>
 
+  <!-- ===== PAGE HERO ===== -->
   <header class="page-hero">
     <div class="container">
       <span class="eyebrow">Browse Workers</span>
@@ -72,15 +192,17 @@
     </div>
   </header>
 
+  <!-- ===== WORKERS PAGE ===== -->
   <section class="workers-page">
     <div class="container">
 
+      <!-- Filter Card -->
       <div class="filter-card">
         <h3>🔍 Search &amp; Filter Workers</h3>
         <div class="filter-row">
           <div class="filter-group">
             <label>Worker Name</label>
-            <input type="text" id="f-name" placeholder="Search by name..." />
+            <input type="text" id="f-name" placeholder="Search by name…" />
           </div>
           <div class="filter-group">
             <label>Trade / Category</label>
@@ -120,6 +242,7 @@
         </div>
       </div>
 
+      <!-- Sort -->
       <div class="sort-bar">
         <span>Sort by:</span>
         <button class="sort-chip active" onclick="setSort(this,'rating')">Top Rated</button>
@@ -128,6 +251,7 @@
         <button class="sort-chip" onclick="setSort(this,'reviews')">Most Reviews</button>
       </div>
 
+      <!-- Results -->
       <div class="results-header">
         <h2 id="results-count">Showing all 8 workers</h2>
       </div>
@@ -135,121 +259,178 @@
       <div class="wgrid" id="worker-grid">
 
         <div class="wcard" data-cat="Electrician" data-loc="Kathmandu" data-rating="4.9" data-price="1200" data-reviews="38">
-          <div class="wcard-banner" style="background:linear-gradient(135deg,#1e40af,#3b82f6);">⚡<div class="wcard-avail"><span class="avail-dot"></span> Available</div></div>
+          <div class="wcard-banner" style="background:linear-gradient(135deg,#1e40af,#3b82f6);">
+            ⚡
+            <div class="wcard-avail"><span class="avail-dot"></span> Available</div>
+          </div>
           <div class="wcard-body">
             <div class="wcard-top"><h3>Ram Bahadur</h3><span class="vbadge">✔ Verified</span></div>
             <p class="wcard-trade">⚡ Electrician &nbsp;·&nbsp; 📍 Kathmandu</p>
             <div class="wcard-rating"><span class="stars">★★★★★</span><span>4.9 · 38 reviews</span></div>
-            <div class="wcard-skills"><span class="skill-chip">Wiring</span><span class="skill-chip">AC Install</span><span class="skill-chip">Solar</span></div>
+            <div class="wcard-skills">
+              <span class="skill-chip">Wiring</span>
+              <span class="skill-chip">AC Install</span>
+              <span class="skill-chip">Solar</span>
+            </div>
           </div>
           <div class="wcard-footer">
             <div class="wcard-price">Rs. 1,200 <span>/ day</span></div>
-            <a href="worker-profile.html?id=1" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">View Profile</a>
+            <a href="../login.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Hire Now</a>
           </div>
         </div>
 
         <div class="wcard" data-cat="Plumber" data-loc="Lalitpur" data-rating="4.7" data-price="1000" data-reviews="24">
-          <div class="wcard-banner" style="background:linear-gradient(135deg,#065f46,#10b981);">🔧<div class="wcard-avail"><span class="avail-dot"></span> Available</div></div>
+          <div class="wcard-banner" style="background:linear-gradient(135deg,#065f46,#10b981);">
+            🔧
+            <div class="wcard-avail"><span class="avail-dot"></span> Available</div>
+          </div>
           <div class="wcard-body">
             <div class="wcard-top"><h3>Sita Tamang</h3><span class="vbadge">✔ Verified</span></div>
             <p class="wcard-trade">🔧 Plumber &nbsp;·&nbsp; 📍 Lalitpur</p>
             <div class="wcard-rating"><span class="stars">★★★★★</span><span>4.7 · 24 reviews</span></div>
-            <div class="wcard-skills"><span class="skill-chip">Pipe Fitting</span><span class="skill-chip">Drainage</span><span class="skill-chip">Tap Repair</span></div>
+            <div class="wcard-skills">
+              <span class="skill-chip">Pipe Fitting</span>
+              <span class="skill-chip">Drainage</span>
+              <span class="skill-chip">Tap Repair</span>
+            </div>
           </div>
           <div class="wcard-footer">
             <div class="wcard-price">Rs. 1,000 <span>/ day</span></div>
-            <a href="worker-profile.html?id=2" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">View Profile</a>
+            <a href="../login.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Hire Now</a>
           </div>
         </div>
 
         <div class="wcard" data-cat="Carpenter" data-loc="Bhaktapur" data-rating="5.0" data-price="1500" data-reviews="52">
-          <div class="wcard-banner" style="background:linear-gradient(135deg,#92400e,#f59e0b);">🪚<div class="wcard-avail"><span class="avail-dot"></span> Available</div></div>
+          <div class="wcard-banner" style="background:linear-gradient(135deg,#92400e,#f59e0b);">
+            🪚
+            <div class="wcard-avail"><span class="avail-dot"></span> Available</div>
+          </div>
           <div class="wcard-body">
             <div class="wcard-top"><h3>Hari Shrestha</h3><span class="vbadge">✔ Verified</span></div>
             <p class="wcard-trade">🪚 Carpenter &nbsp;·&nbsp; 📍 Bhaktapur</p>
             <div class="wcard-rating"><span class="stars">★★★★★</span><span>5.0 · 52 reviews</span></div>
-            <div class="wcard-skills"><span class="skill-chip">Furniture</span><span class="skill-chip">Doors</span><span class="skill-chip">Cabinets</span></div>
+            <div class="wcard-skills">
+              <span class="skill-chip">Furniture</span>
+              <span class="skill-chip">Doors</span>
+              <span class="skill-chip">Cabinets</span>
+            </div>
           </div>
           <div class="wcard-footer">
             <div class="wcard-price">Rs. 1,500 <span>/ day</span></div>
-            <a href="worker-profile.html?id=3" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">View Profile</a>
+            <a href="../login.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Hire Now</a>
           </div>
         </div>
 
         <div class="wcard" data-cat="Painter" data-loc="Kathmandu" data-rating="4.5" data-price="1100" data-reviews="18">
-          <div class="wcard-banner" style="background:linear-gradient(135deg,#4c1d95,#8b5cf6);">🎨<div class="wcard-avail"><span class="avail-dot"></span> Available</div></div>
+          <div class="wcard-banner" style="background:linear-gradient(135deg,#4c1d95,#8b5cf6);">
+            🎨
+            <div class="wcard-avail"><span class="avail-dot"></span> Available</div>
+          </div>
           <div class="wcard-body">
             <div class="wcard-top"><h3>Raju Magar</h3><span class="vbadge">✔ Verified</span></div>
             <p class="wcard-trade">🎨 Painter &nbsp;·&nbsp; 📍 Kathmandu</p>
             <div class="wcard-rating"><span class="stars">★★★★☆</span><span>4.5 · 18 reviews</span></div>
-            <div class="wcard-skills"><span class="skill-chip">Interior</span><span class="skill-chip">Exterior</span><span class="skill-chip">Texture</span></div>
+            <div class="wcard-skills">
+              <span class="skill-chip">Interior</span>
+              <span class="skill-chip">Exterior</span>
+              <span class="skill-chip">Texture</span>
+            </div>
           </div>
           <div class="wcard-footer">
             <div class="wcard-price">Rs. 1,100 <span>/ day</span></div>
-            <a href="worker-profile.html?id=4" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">View Profile</a>
+            <a href="../login.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Hire Now</a>
           </div>
         </div>
 
         <div class="wcard" data-cat="Mason" data-loc="Pokhara" data-rating="4.6" data-price="1300" data-reviews="31">
-          <div class="wcard-banner" style="background:linear-gradient(135deg,#7f1d1d,#ef4444);">🧱<div class="wcard-avail"><span class="avail-dot"></span> Available</div></div>
+          <div class="wcard-banner" style="background:linear-gradient(135deg,#7f1d1d,#ef4444);">
+            🧱
+            <div class="wcard-avail"><span class="avail-dot"></span> Available</div>
+          </div>
           <div class="wcard-body">
             <div class="wcard-top"><h3>Bir Thapa</h3><span class="vbadge">✔ Verified</span></div>
             <p class="wcard-trade">🧱 Mason &nbsp;·&nbsp; 📍 Pokhara</p>
             <div class="wcard-rating"><span class="stars">★★★★★</span><span>4.6 · 31 reviews</span></div>
-            <div class="wcard-skills"><span class="skill-chip">Brickwork</span><span class="skill-chip">Plastering</span><span class="skill-chip">Tiling</span></div>
+            <div class="wcard-skills">
+              <span class="skill-chip">Brickwork</span>
+              <span class="skill-chip">Plastering</span>
+              <span class="skill-chip">Tiling</span>
+            </div>
           </div>
           <div class="wcard-footer">
             <div class="wcard-price">Rs. 1,300 <span>/ day</span></div>
-            <a href="worker-profile.html?id=5" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">View Profile</a>
+            <a href="../login.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Hire Now</a>
           </div>
         </div>
 
         <div class="wcard" data-cat="Mechanic" data-loc="Chitwan" data-rating="4.8" data-price="1400" data-reviews="44">
-          <div class="wcard-banner" style="background:linear-gradient(135deg,#134e4a,#14b8a6);">🔩<div class="wcard-avail"><span class="avail-dot"></span> Available</div></div>
+          <div class="wcard-banner" style="background:linear-gradient(135deg,#134e4a,#14b8a6);">
+            🔩
+            <div class="wcard-avail"><span class="avail-dot"></span> Available</div>
+          </div>
           <div class="wcard-body">
             <div class="wcard-top"><h3>Suresh Gurung</h3><span class="vbadge">✔ Verified</span></div>
             <p class="wcard-trade">🔩 Mechanic &nbsp;·&nbsp; 📍 Chitwan</p>
             <div class="wcard-rating"><span class="stars">★★★★★</span><span>4.8 · 44 reviews</span></div>
-            <div class="wcard-skills"><span class="skill-chip">Engine Repair</span><span class="skill-chip">2-Wheeler</span><span class="skill-chip">Welding</span></div>
+            <div class="wcard-skills">
+              <span class="skill-chip">Engine Repair</span>
+              <span class="skill-chip">2-Wheeler</span>
+              <span class="skill-chip">Welding</span>
+            </div>
           </div>
           <div class="wcard-footer">
             <div class="wcard-price">Rs. 1,400 <span>/ day</span></div>
-            <a href="worker-profile.html?id=6" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">View Profile</a>
+            <a href="../login.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Hire Now</a>
           </div>
         </div>
 
         <div class="wcard" data-cat="Labour" data-loc="Kathmandu" data-rating="4.4" data-price="800" data-reviews="12">
-          <div class="wcard-banner" style="background:linear-gradient(135deg,#166534,#22c55e);">👷<div class="wcard-avail"><span class="avail-dot"></span> Available</div></div>
+          <div class="wcard-banner" style="background:linear-gradient(135deg,#166534,#22c55e);">
+            👷
+            <div class="wcard-avail"><span class="avail-dot"></span> Available</div>
+          </div>
           <div class="wcard-body">
             <div class="wcard-top"><h3>Dhana Lama</h3><span class="vbadge">✔ Verified</span></div>
             <p class="wcard-trade">👷 General Labour &nbsp;·&nbsp; 📍 Kathmandu</p>
             <div class="wcard-rating"><span class="stars">★★★★☆</span><span>4.4 · 12 reviews</span></div>
-            <div class="wcard-skills"><span class="skill-chip">Loading</span><span class="skill-chip">Digging</span><span class="skill-chip">Cleaning</span></div>
+            <div class="wcard-skills">
+              <span class="skill-chip">Loading</span>
+              <span class="skill-chip">Digging</span>
+              <span class="skill-chip">Cleaning</span>
+            </div>
           </div>
           <div class="wcard-footer">
             <div class="wcard-price">Rs. 800 <span>/ day</span></div>
-            <a href="worker-profile.html?id=7" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">View Profile</a>
+            <a href="../login.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Hire Now</a>
           </div>
         </div>
 
         <div class="wcard" data-cat="Handyman" data-loc="Lalitpur" data-rating="4.7" data-price="1050" data-reviews="27">
-          <div class="wcard-banner" style="background:linear-gradient(135deg,#831843,#ec4899);">🛠<div class="wcard-avail"><span class="avail-dot"></span> Available</div></div>
+          <div class="wcard-banner" style="background:linear-gradient(135deg,#831843,#ec4899);">
+            🛠
+            <div class="wcard-avail"><span class="avail-dot"></span> Available</div>
+          </div>
           <div class="wcard-body">
             <div class="wcard-top"><h3>Maya Rai</h3><span class="vbadge">✔ Verified</span></div>
             <p class="wcard-trade">🛠 Handyman &nbsp;·&nbsp; 📍 Lalitpur</p>
             <div class="wcard-rating"><span class="stars">★★★★★</span><span>4.7 · 27 reviews</span></div>
-            <div class="wcard-skills"><span class="skill-chip">Odd Jobs</span><span class="skill-chip">Repairs</span><span class="skill-chip">Assembly</span></div>
+            <div class="wcard-skills">
+              <span class="skill-chip">Odd Jobs</span>
+              <span class="skill-chip">Repairs</span>
+              <span class="skill-chip">Assembly</span>
+            </div>
           </div>
           <div class="wcard-footer">
             <div class="wcard-price">Rs. 1,050 <span>/ day</span></div>
-            <a href="worker-profile.html?id=8" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">View Profile</a>
+            <a href="../login.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Hire Now</a>
           </div>
         </div>
 
-      </div>
+      </div><!-- /wgrid -->
     </div>
   </section>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
@@ -257,11 +438,24 @@
           <img class="footer-brand-logo" src="../images/logo-nobackground.png" alt="WorkBandhu" />
           <p>A simple, fair way to connect daily wage workers with people who need them.</p>
         </div>
-        <div class="footer-col"><h4>Explore</h4><ul><li><a href="workers-listing.html">Find Workers</a></li><li><a href="services.html">Services</a></li><li><a href="../html/about.html">About</a></li></ul></div>
-        <div class="footer-col"><h4>Account</h4><ul><li><a href="../login.html">Login</a></li><li><a href="../register.html">Register</a></li></ul></div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="worker.html">Find Workers</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="../login.html">Login</a></li>
+            <li><a href="../register.html">Register</a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom container">
-        <p>© 2026 WorkBandhu. College Project. All rights reserved.</p>
+        <p>© 2026 WorkBandhu. College Project — All rights reserved.</p>
         <p>Made with ❤️ for Nepal</p>
       </div>
     </div>
@@ -270,26 +464,32 @@
   <script src="../js/main.js"></script>
   <script>
     function filterWorkers() {
-      const name = document.getElementById('f-name').value.toLowerCase();
-      const cat = document.getElementById('f-cat').value;
-      const loc = document.getElementById('f-loc').value;
+      const name   = document.getElementById('f-name').value.toLowerCase();
+      const cat    = document.getElementById('f-cat').value;
+      const loc    = document.getElementById('f-loc').value;
       const rating = parseFloat(document.getElementById('f-rating').value) || 0;
-      const cards = document.querySelectorAll('.wcard');
-      let visible = 0;
+      const cards  = document.querySelectorAll('.wcard');
+      let visible  = 0;
       cards.forEach(c => {
-        const show = (!name || c.querySelector('h3').textContent.toLowerCase().includes(name))
-                  && (!cat  || c.dataset.cat === cat)
-                  && (!loc  || c.dataset.loc === loc)
-                  && parseFloat(c.dataset.rating) >= rating;
+        const nameEl  = c.querySelector('h3').textContent.toLowerCase();
+        const cCat    = c.dataset.cat;
+        const cLoc    = c.dataset.loc;
+        const cRating = parseFloat(c.dataset.rating);
+        const show = (!name || nameEl.includes(name))
+                  && (!cat  || cCat === cat)
+                  && (!loc  || cLoc === loc)
+                  && cRating >= rating;
         c.style.display = show ? '' : 'none';
         if (show) visible++;
       });
-      document.getElementById('results-count').textContent = `Showing ${visible} worker${visible !== 1 ? 's' : ''}`;
+      document.getElementById('results-count').textContent =
+        `Showing ${visible} worker${visible !== 1 ? 's' : ''}`;
     }
+
     function setSort(btn, type) {
       document.querySelectorAll('.sort-chip').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const grid = document.getElementById('worker-grid');
+      const grid  = document.getElementById('worker-grid');
       const cards = [...grid.querySelectorAll('.wcard')];
       cards.sort((a, b) => {
         if (type === 'rating')     return parseFloat(b.dataset.rating)  - parseFloat(a.dataset.rating);
@@ -299,8 +499,11 @@
       });
       cards.forEach(c => grid.appendChild(c));
     }
+
+    // Pre-filter from URL query param (from homepage search)
     window.addEventListener('DOMContentLoaded', () => {
-      const cat = new URLSearchParams(window.location.search).get('cat');
+      const params = new URLSearchParams(window.location.search);
+      const cat    = params.get('cat');
       if (cat) {
         const sel = document.getElementById('f-cat');
         const opt = [...sel.options].find(o => o.value.toLowerCase() === cat.toLowerCase());
